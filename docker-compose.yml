@@ -1,0 +1,14 @@
+version: "3.8"
+ services:
+  container_service:
+    build:
+     context: .
+     dockerfile: Dockerfile
+    container_name: tech_assess_container
+    volumes:
+      - ./tech_assess_ws/src:/root/tech_assess_ws/src
+    environment:
+      - DISPLAY=${DISPLAY}
+    network_mode: host
+    stdin_open: true
+    tty: true
