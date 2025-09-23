@@ -25,12 +25,18 @@ RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | a
 
 
 RUN apt-get update && apt-get install -y \
-    ros-humble-desktop \ #install ROS 2 Humble (desktop variant)
-    python3-argcomplete \ #shell auto-completion
-    python3-colcon-common-extensions\ #colcon 
-    libeigen3-dev\ #install C++ Eigen library for linear algebra
-    libyaml-cpp-dev\ #install yaml-c++ library
-    ros-humble-rviz-visual-tools\ #install rviz_visual_tools
+    #install ROS 2 Humble (desktop variant)
+    ros-humble-desktop \ 
+    #shell auto-completion
+    python3-argcomplete \ 
+    #colcon 
+    python3-colcon-common-extensions\ 
+    #install C++ Eigen library for linear algebra
+    libeigen3-dev\ 
+    #install yaml-c++ library
+    libyaml-cpp-dev\ 
+    #install rviz_visual_tools
+    ros-humble-rviz-visual-tools\ 
     && apt-get clean
 
 

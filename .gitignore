@@ -1,7 +1,7 @@
 # ROS 2 build artifacts
-dev_ws/build/
-dev_ws/install/
-dev_ws/log/
+tech_assess_ws/build/
+tech_assess_ws/install/
+tech_assess_ws/log/
 
 # Python cache
 __pycache__/
