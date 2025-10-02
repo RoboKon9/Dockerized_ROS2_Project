@@ -1,0 +1,33 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/progressive_robotics/ros2_ws_test/build/rt_comm_monitor",
+        "/home/progressive_robotics/ros2_ws_test/install/rt_comm_monitor/lib/python3.10/site-packages",
+        "/home/progressive_robotics/ros2_ws_test/build/kuka_rsi_simulator",
+        "/home/progressive_robotics/ros2_ws_test/install/kuka_rsi_simulator/lib/python3.10/site-packages",
+        "/home/progressive_robotics/ros2_ws_test/install/kuka_driver_interfaces/local/lib/python3.10/dist-packages",
+        "/home/progressive_robotics/ros2_ws_test/build/adapter_description",
+        "/home/progressive_robotics/ros2_ws_test/install/adapter_description/lib/python3.10/site-packages",
+        "/home/progressive_robotics/ros2_ws/build/kuka_rsi_simulator",
+        "/home/progressive_robotics/ros2_ws/install/kuka_rsi_simulator/lib/python3.10/site-packages",
+        "/home/progressive_robotics/ros2_ws/install/kuka_driver_interfaces/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/progressive_robotics/ros2_ws_test/build/rt_comm_monitor",
+        "/home/progressive_robotics/ros2_ws_test/install/rt_comm_monitor/lib/python3.10/site-packages",
+        "/home/progressive_robotics/ros2_ws_test/build/kuka_rsi_simulator",
+        "/home/progressive_robotics/ros2_ws_test/install/kuka_rsi_simulator/lib/python3.10/site-packages",
+        "/home/progressive_robotics/ros2_ws_test/install/kuka_driver_interfaces/local/lib/python3.10/dist-packages",
+        "/home/progressive_robotics/ros2_ws_test/build/adapter_description",
+        "/home/progressive_robotics/ros2_ws_test/install/adapter_description/lib/python3.10/site-packages",
+        "/home/progressive_robotics/ros2_ws/build/kuka_rsi_simulator",
+        "/home/progressive_robotics/ros2_ws/install/kuka_rsi_simulator/lib/python3.10/site-packages",
+        "/home/progressive_robotics/ros2_ws/install/kuka_driver_interfaces/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "files.associations": {
+        "random": "cpp"
+    }
+}

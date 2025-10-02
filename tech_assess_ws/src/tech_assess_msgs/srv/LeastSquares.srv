@@ -1,0 +1,10 @@
+#request
+
+geometry_msgs/Vector3[3] alpha #it makes sense only for 3X3 matrix since b is a 3D vector. So 3D vector of 3 in geometry_msgs
+geometry_msgs/Vector3 beta # b is always a 3D vector
+---
+#response
+
+geometry_msgs/Vector3 x_t # transformed vector
+geometry_msgs/Vector3[3] rot_mat_r #rotation matrix
+geometry_msgs/Vector3 d_r #displacement vector 
