@@ -11,6 +11,7 @@ To run the container service run:
 Navigate to the ROS2 workspace and build it:
 
 *cd ~/root/tech_assess_ws*
+
 *colcon build*
 
 source the workspace:
@@ -23,11 +24,23 @@ Test the linear algebra service:
 
 *ros2 run linear_algebra_service least_squares_client*
 
-2) Run the server node
+2) Open a new terminal inside the container
+
+sudo docker exec -it tech_assess_container bash
+
+3) navigate, build and source again
+
+*cd ~/root/tech_assess_ws*
+
+*colcon build*
+
+*source install/setup.bash*
+
+3) Run the server node
 
 *ros2 run linear_algebra_service least_squares_server*
 
-3) The intermediate and final results will be printed on the terminal.
+3) The intermediate and final results will be printed on the terminal(s).
 
 
 

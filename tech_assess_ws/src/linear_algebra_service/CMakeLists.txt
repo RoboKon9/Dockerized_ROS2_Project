@@ -16,8 +16,7 @@ find_package(Eigen3 REQUIRED) #declare dependency to Eigen
 find_package(yaml-cpp REQUIRED)
 
 #add executable
-add_executable(simple_publisher src/simple_publisher.cpp)
-add_executable(simple_subscriber src/simple_subscriber.cpp)
+
 add_executable(least_squares_server src/least_squares_server.cpp)
 add_executable(least_squares_client src/least_squares_client.cpp)
 
@@ -26,8 +25,7 @@ target_include_directories(least_squares_server PUBLIC /usr/include/eigen3)
 target_include_directories(least_squares_client PUBLIC /usr/include/eigen3)
 
 #declare dependencies to the executable
-ament_target_dependencies(simple_publisher rclcpp std_msgs)
-ament_target_dependencies(simple_subscriber rclcpp std_msgs)
+
 ament_target_dependencies(least_squares_server rclcpp tech_assess_msgs Eigen3 geometry_msgs)
 ament_target_dependencies(least_squares_client rclcpp tech_assess_msgs Eigen3 yaml-cpp geometry_msgs)
 
@@ -39,12 +37,7 @@ install(DIRECTORY config
   DESTINATION share/${PROJECT_NAME}
 )
 
-#install publisher script
-install(TARGETS simple_publisher
-        DESTINATION lib/${PROJECT_NAME}) 
-#install subscriber script
-install(TARGETS simple_subscriber
-        DESTINATION lib/${PROJECT_NAME})
+
 #install least_squares_server script
 install(TARGETS least_squares_server
         DESTINATION lib/${PROJECT_NAME})
