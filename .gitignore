@@ -2,7 +2,7 @@
 tech_assess_ws/build/
 tech_assess_ws/install/
 tech_assess_ws/log/
-
+tech_assess_ws/.vscode/
 # Python cache
 __pycache__/
 *.pyc
