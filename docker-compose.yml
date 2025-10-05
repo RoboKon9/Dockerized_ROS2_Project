@@ -7,6 +7,7 @@ services:
     container_name: tech_assess_container
     volumes:
       - ./tech_assess_ws/src:/root/tech_assess_ws/src
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw 
     environment:
       - DISPLAY=${DISPLAY}
     network_mode: host

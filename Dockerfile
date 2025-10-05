@@ -27,6 +27,9 @@ RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | a
 RUN apt-get update && apt-get install -y \
     #install ROS 2 Humble (desktop variant)
     ros-humble-desktop \ 
+    #install xacro
+    ros-humble-xacro \
+
     #shell auto-completion
     python3-argcomplete \ 
     #colcon 
