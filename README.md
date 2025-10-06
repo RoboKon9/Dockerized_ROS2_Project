@@ -38,7 +38,7 @@ Test the linear algebra service:
 
 3) navigate, build and source again
 
-  ***cd ~/root/tech_assess_ws***
+  ***cd root/tech_assess_ws***
 
   ***colcon build***
 
