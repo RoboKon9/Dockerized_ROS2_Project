@@ -2,6 +2,7 @@ Dockerized ROS2 Project - Technical Assessment for Progressive Robotics
 
 First clone the repo and then:
   ***cd Dockerized_ROS2_Project***
+  
 To have rviz inside the container run in local terminal the following:
 
   ***xhost +local:docker***
@@ -17,7 +18,7 @@ To run the container service run:
 
 Navigate to the ROS2 workspace and build it:
 
-  ***cd ~/root/tech_assess_ws***
+  ***cd root/tech_assess_ws***
 
   ***colcon build***
 
@@ -31,7 +32,7 @@ Test the linear algebra service:
 
   ***ros2 run linear_algebra_service least_squares_client***
 
-2) Open a new terminal inside the container
+2) To Open a new terminal inside the container, open a new local terminal and run:
 
   ***sudo docker exec -it tech_assess_container bash***
 
@@ -49,13 +50,13 @@ Test the linear algebra service:
 
 The intermediate and final results will be printed on the terminal(s).
 
-Test the ur20_display package, in a new terminal (remember to navigate,build and source again) run:
+Test the ur20_display package, (if in a new terminal remember to navigate,build and source again) run:
 
   ***ros2 launch ur20_display ur20_display.launch.py***
 
-Note: Rviz will appear immediately but it will take some time to see the robot model and the calculations (~5 seconds). Also, even though a .rviz configuration file is passed as a paremeter in the rviz node in the launch file, MarkerArray should be opened manually and rviz_visual_tools topic must be selected.
+Note: Rviz will appear immediately but it will take some time to see the robot model and the calculations (~5 seconds). Also, even though a .rviz configuration file is passed as a paremeter in the rviz node in the launch file, MarkerArray should be opened manually and rviz_visual_tools topic must be selected. You can do this during this 5 second loading time so you can see the frame trajectory as in the screenshot.
 
-![RViz screenshot](rviz.png)
+![RViz screenshot](rviz2.png)
 
 
 
