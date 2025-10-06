@@ -29,7 +29,6 @@ RUN apt-get update && apt-get install -y \
     ros-humble-desktop \ 
     #install xacro
     ros-humble-xacro \
-
     #shell auto-completion
     python3-argcomplete \ 
     #colcon 

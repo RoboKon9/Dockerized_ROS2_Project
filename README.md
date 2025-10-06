@@ -1,6 +1,8 @@
 Dockerized ROS2 Project - Technical Assessment for Progressive Robotics
 
-To have rviz in docker run in local host terminal the following:
+First clone the repo and then:
+  ***cd Dockerized_ROS2_Project***
+To have rviz inside the container run in local terminal the following:
 
   ***xhost +local:docker***
 
