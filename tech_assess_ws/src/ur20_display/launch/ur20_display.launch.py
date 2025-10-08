@@ -55,6 +55,14 @@ def generate_launch_description():
         
     )
 
+    joint_traj_node = Node (
+        package = "joint_traj_graph",
+        executable="joint_traj",
+        name="joint_traj",
+
+
+    )
+
     rviz_node = Node (
         package="rviz2",
         executable="rviz2",
@@ -65,4 +73,4 @@ def generate_launch_description():
 
     )
 
-    return LaunchDescription([robot_model,robot_state_publisher,custom_state_publisher,rviz_node])
+    return LaunchDescription([robot_model,robot_state_publisher,custom_state_publisher,rviz_node,joint_traj_node])

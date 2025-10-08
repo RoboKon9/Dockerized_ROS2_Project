@@ -45,6 +45,7 @@ class StatePublisher : public rclcpp::Node {
         tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
         tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);
         joint_pub = create_publisher<sensor_msgs::msg::JointState>("joint_states",10);
+        joint_pub_2 = create_publisher<sensor_msgs::msg::JointState>("joint_traj",10);
         timer1 = create_wall_timer(std::chrono::milliseconds(10),std::bind(&StatePublisher::joint_config_callback,this),cb_group1_); // publish the robot configuration at 100Hz
         timer2 = create_wall_timer(std::chrono::milliseconds(11),std::bind(&StatePublisher::tf_callback,this),cb_group2_); // calculate TF transformations every 90 Hz (slight delay to solve race condition) 
 
@@ -53,7 +54,7 @@ class StatePublisher : public rclcpp::Node {
 
     private:
     std::shared_ptr<rviz_visual_tools::RvizVisualTools> visual_tools_;
-    rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr  joint_pub;
+    rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr  joint_pub ,  joint_pub_2 ;
     rclcpp::TimerBase::SharedPtr timer1;
     rclcpp::TimerBase::SharedPtr timer2;
     std::vector<double> joint_angles ;
@@ -85,6 +86,7 @@ class StatePublisher : public rclcpp::Node {
      msg.position = joint_pos;
      //RCLCPP_INFO_STREAM(get_logger(), "Joint angles: " << msg.position[0] << " " << msg.position[1] << " "<< msg.position[2] << " "<< msg.position[3] << " "<< msg.position[4] << " "<< msg.position[5]);
      joint_pub->publish(msg); 
+     joint_pub_2->publish(msg);
      counter++; //comment this out if you do not want the oscillatory motion
      
     
