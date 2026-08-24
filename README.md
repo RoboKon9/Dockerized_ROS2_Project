@@ -150,6 +150,7 @@ The robot model and calculations may take a few seconds (~5s) to appear.
 
 ## Notes
 
+- Note: Built under technical-assessment time constraints; it demonstrates the intended approach, with additional optimizations and improvements planned in future updates.
 - Prefer `docker compose` (space) over legacy `docker-compose`.
 - If your setup requires `sudo` for Docker commands, prepend `sudo` as needed.
 - If a custom RViz config is used by launch files, ensure file paths are valid inside the container.
