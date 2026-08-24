@@ -1,68 +1,161 @@
-Dockerized ROS2 Project - Technical Assessment for Progressive Robotics
+# Dockerized ROS 2 Project
+Technical Assessment for Progressive Robotics
 
-First clone the repo and then:
-  ***cd Dockerized_ROS2_Project***
-  
-To have rviz inside the container run in local terminal the following:
+A Dockerized ROS 2 workspace that includes:
 
-  ***xhost +local:docker***
+- `linear_algebra_service` (least-squares client/server example)
+- `ur20_display` (UR20 visualization in RViz)
 
-To build the image and start the container run:
+---
 
-  ***sudo docker-compose up --build -d***
+## Prerequisites
 
+Before you begin, make sure you have:
 
-To run the container service run:
+- Docker
+- Docker Compose (v2+ recommended)
+- Linux host with X11 (for RViz GUI forwarding)
 
-  ***sudo docker-compose exec container_service bash***
+> RViz GUI forwarding from containers is platform/display-server dependent.  
+> This README assumes an X11-compatible setup.
 
-Navigate to the ROS2 workspace and build it:
+---
 
-  ***cd root/tech_assess_ws***
+## Quick Start
 
-  ***colcon build***
+### 1) Clone the repository
 
-source the workspace:
+```bash
+git clone https://github.com/RoboKon9/Dockerized_ROS2_Project.git
+cd Dockerized_ROS2_Project
+```
 
-  ***source install/setup.bash***
+### 2) Allow Docker containers to access your X server (for RViz)
 
-Test the linear algebra service:
+```bash
+xhost +local:docker
+```
 
-1) Run the client node
+> Security note: this relaxes X server access controls.  
+> Revert later with:
+>
+> ```bash
+> xhost -local:docker
+> ```
 
-  ***ros2 run linear_algebra_service least_squares_client***
+### 3) Build and start the container
 
-2) To Open a new terminal inside the container, open a new local terminal and run:
+```bash
+docker compose up --build -d
+```
 
-  ***sudo docker exec -it tech_assess_container bash***
+### 4) Open a shell in the service container
 
-3) navigate, build and source again
+```bash
+docker compose exec container_service bash
+```
 
-  ***cd root/tech_assess_ws***
+---
 
-  ***colcon build***
+## Build the ROS 2 Workspace
 
-  ***source install/setup.bash***
+Inside the container:
 
-4) Run the server node
+```bash
+cd /root/tech_assess_ws
+colcon build
+source install/setup.bash
+```
 
-  ***ros2 run linear_algebra_service least_squares_server***
+---
 
-The intermediate and final results will be printed on the terminal(s).
+## Run the Linear Algebra Service Demo
 
-Test the ur20_display package, (if in a new terminal remember to navigate,build and source again) run:
+### Terminal A (Client)
 
-  ***ros2 launch ur20_display ur20_display.launch.py***
+Inside the container (after build + source):
 
-Note: Rviz will appear immediately but it will take some time to see the robot model and the calculations (~5 seconds). Also, even though a .rviz configuration file is passed as a paremeter in the rviz node in the launch file, MarkerArray should be opened manually and rviz_visual_tools topic must be selected. You can do this during this 5 second loading time so you can see the frame trajectory as in the screenshot.
+```bash
+ros2 run linear_algebra_service least_squares_client
+```
+
+### Terminal B (Server)
+
+Open a second host terminal and enter the running container:
+
+```bash
+docker exec -it tech_assess_container bash
+```
+
+Then in that container shell:
+
+```bash
+cd /root/tech_assess_ws
+colcon build
+source install/setup.bash
+ros2 run linear_algebra_service least_squares_server
+```
+
+You should see intermediate and final computation results printed in the terminals.
+
+---
+
+## Run the UR20 RViz Display
+
+From a container shell (workspace built and sourced):
+
+```bash
+ros2 launch ur20_display ur20_display.launch.py
+```
+
+RViz should open immediately.  
+The robot model and calculations may take a few seconds (~5s) to appear.
+
+---
+
+## Troubleshooting
+
+- **`rviz` does not open**
+  - Confirm `xhost +local:docker` was run on the host.
+  - Verify X11 environment variables/volume forwarding are correctly configured in Docker Compose.
+- **`ros2` command/package not found**
+  - Re-run:
+    ```bash
+    source /root/tech_assess_ws/install/setup.bash
+    ```
+- **Build errors**
+  - Ensure dependencies are installed in the container.
+  - Rebuild cleanly:
+    ```bash
+    cd /root/tech_assess_ws
+    rm -rf build install log
+    colcon build
+    ```
+
+---
+
+## Project Structure
+
+```text
+.
+├── tech_assess_ws/
+│   ├── src/
+│   │   ├── linear_algebra_service/
+│   │   └── ur20_display/
+├── docker-compose.yml
+└── README.md
+```
+
+---
+
+## Notes
+
+- Prefer `docker compose` (space) over legacy `docker-compose`.
+- If your setup requires `sudo` for Docker commands, prepend `sudo` as needed.
+- If a custom RViz config is used by launch files, ensure file paths are valid inside the container.
+
+---
+
+## Screenshot
 
 ![RViz screenshot](rviz2.png)
-
-
-
-
-
-
-
-
-
